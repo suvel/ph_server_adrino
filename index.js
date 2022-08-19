@@ -1,8 +1,26 @@
-const phReader = require("./functions/phReader");
+const express = require("express");
+const cors = require("cors");
+const app = express();
+const getPH = require("./service/getPH");
 
-async function main() {
-  const phData = await phReader();
-  console.log({ phData });
-}
+// ========= constants
+const PORT = 3000;
+// =========
 
-main();
+// ========= middleware
+app.use(cors());
+// =========
+
+// ========= routes
+/**
+ * url: http://localhost:3000/api/ph
+ * method: GET
+ * route: /api/ph
+ * desc: Gets array integer by reading by reading from * ph.txt mention at constant/fileURS - phFilePath
+ */
+app.get("/api/ph", getPH);
+// =========
+
+app.listen(PORT, () => {
+  console.log(`Server is running ${PORT}`);
+});

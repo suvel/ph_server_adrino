@@ -1,5 +1,5 @@
 const readFile = require("./readFile");
-const phFilePath = require("../constant/fileURLS");
+const phFilePath = require("../constant/fileURLS").phFilePath;
 const readPH = () => {
   return new Promise(async (resolve, reject) => {
     try {
